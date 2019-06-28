@@ -3,10 +3,10 @@ import './App.css';
 
 class App extends Component {
   state = {
-    seconds: 5, // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
-    // seconds: 0,
-    minutes: 0,
-    // minutes: 5,
+    // seconds: 5, // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
+    seconds: 0,
+    // minutes: 0,
+    minutes: 5,
     timerRunning: false,
     overtime: false,
   }
@@ -95,13 +95,14 @@ class App extends Component {
   }
 
   render() {
-    const { minutes, seconds, timerRunning } = this.state
+    const { minutes, seconds, timerRunning, overtime } = this.state
+
     return (
       <div>
         <div className="header">
           <p id="title"><span id="emphasize">{`//`}</span> Blog Timer</p>
           <p id="time-remaining">
-            Time Remaining: <span className={ timerRunning ? "on" : "off" }> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
+            {overtime ? 'Overtime' : 'Time Remaining'}: <span className={ timerRunning ? "on" : "off" }> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
           </p>
           <button id="timer-button" onClick={() => this.toggleTimer()}>
             { timerRunning ? "Stop Timer" : "Start Timer" }
