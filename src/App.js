@@ -61,8 +61,10 @@ class App extends React.Component {
       <div>
         <div className="header">
           <p id="title"><span id="emphasize">//</span> Blog Timer</p>
-          <p id="time-remaining">Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
-          <button onClick={() => this.toggleTimer()}>
+          <p id="time-remaining">
+            Time Remaining: <span class={ timerRunning ? "on" : "off" }> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
+          </p>
+          <button id="timer-button" onClick={() => this.toggleTimer()}>
             { timerRunning ? "Stop Timer" : "Start Timer" }
           </button>
         </div>

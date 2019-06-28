@@ -27,3 +27,65 @@ body {
 #time-remaining {
   font-size: 2em;
 }
+
+.on {
+  animation: timer-on 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.off {
+  animation: timer-off 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes timer-on {
+  0% {
+    color: #ff6c6c;
+  }
+  100% {
+    color: #6CD4FF;
+  }
+}
+
+@keyframes timer-off {
+  0% {
+    color: #6CD4FF;
+  }
+  100% {
+    color: #ff6c6c;
+  }
+}
+
+#timer-button {
+  outline: none;
+  background: none;
+  font-size: 1.3em;
+  border-radius: 50em;
+  width: 5.5em;
+  animation: btn-no-hover 0.2s;
+  animation-fill-mode: forwards;
+  border: none;
+}
+
+#timer-button:hover {
+  animation: btn-hover 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes btn-no-hover {
+  0% {
+    color: #6CD4FF;
+  }
+  100% {
+    color: #ececec;
+  }
+}
+
+@keyframes btn-hover {
+  0% {
+    color: #ececec;
+  }
+  100% {
+    color: #6CD4FF;
+  }
+}
