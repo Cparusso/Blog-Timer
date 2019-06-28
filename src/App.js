@@ -3,10 +3,10 @@ import './App.css';
 
 class App extends Component {
   state = {
-    // seconds: 5, // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
-    seconds: 0,
-    // minutes: 0,
-    minutes: 5,
+    seconds: 5, // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
+    // seconds: 0,
+    minutes: 0,
+    // minutes: 5,
     timerRunning: false,
     overtime: false,
   }
@@ -57,7 +57,6 @@ class App extends Component {
       }
     } else {
       clearInterval(this.myInterval)
-
       this.setState((prevState) => ({
         timerRunning: false,
         seconds: 0,
