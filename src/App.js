@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import warningSound from './sounds/to-the-point.mp3';
+import timesUpSound from './sounds/applauses.mp3';
 import './App.css';
 
 class App extends Component {
   state = {
-    seconds: 5, // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
-    // seconds: 0,
-    minutes: 0,
-    // minutes: 5,
+    // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
+    seconds: 0, // real
+    minutes: 5, // real
+    // seconds: 5, // test
+    // minutes: 0, // test
     timerRunning: false,
     overtime: false,
   }
@@ -18,6 +21,11 @@ class App extends Component {
 
   toggleTimer = () => {
     const { timerRunning, overtime } = this.state
+    const oneMinWarning = new Audio(warningSound);
+    const timesUp = new Audio(timesUpSound);
+
+    oneMinWarning.play()
+    timesUp.play()
 
     if (!overtime) {
       if (!timerRunning) {
