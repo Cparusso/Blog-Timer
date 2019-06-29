@@ -6,10 +6,10 @@ import './App.css';
 class App extends Component {
   state = {
     // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
-    seconds: 0, // real
-    minutes: 5, // real
-    // seconds: 5, // test
-    // minutes: 0, // test
+    // seconds: 0, // real
+    // minutes: 5, // real
+    seconds: 5, // test
+    minutes: 0, // test
     timerRunning: false,
     overtime: false,
   }
@@ -24,8 +24,6 @@ class App extends Component {
     const oneMinWarning = new Audio(warningSound);
     const timesUp = new Audio(timesUpSound);
 
-    oneMinWarning.play()
-    timesUp.play()
 
     if (!overtime) {
       if (!timerRunning) {
@@ -42,11 +40,15 @@ class App extends Component {
             }), this.updateTitle)
           }
           if (seconds === 0) {
+            if (minutes === 1) {
+              oneMinWarning.play()
+            }
             if (minutes === 0) {
               clearInterval(this.myInterval)
               this.setState((prevState) => ({
                 overtime: !prevState.overtime
               }))
+              timesUp.play()
               this.countUp()
             } else {
               this.setState((prevState) => ({
@@ -64,13 +66,7 @@ class App extends Component {
         }))
       }
     } else {
-      clearInterval(this.myInterval)
-      this.setState((prevState) => ({
-        timerRunning: false,
-        seconds: 0,
-        minutes: 5,
-        overtime: false,
-      }))
+      this.resetTimer()
     }
   }
 
@@ -97,6 +93,17 @@ class App extends Component {
     }))
   }
 
+  resetTimer = () => {
+    clearInterval(this.myInterval)
+
+    this.setState((prevState) => ({
+      timerRunning: false,
+      seconds: 0,
+      minutes: 5,
+      overtime: false,
+    }))
+  }
+
   componentWillUnmount() {
     clearInterval(this.myInterval)
   }
@@ -116,6 +123,9 @@ class App extends Component {
           </p>
           <button id="timer-button" onClick={() => this.toggleTimer()}>
             { timerRunning ? "Stop Timer" : "Start Timer" }
+          </button>
+          <button id="timer-button" onClick={() => this.resetTimer()}>
+            Reset
           </button>
         </div>
       </div>
