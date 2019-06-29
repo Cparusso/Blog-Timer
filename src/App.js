@@ -21,9 +21,6 @@ class App extends Component {
 
   toggleTimer = () => {
     const { timerRunning, overtime } = this.state
-    const oneMinWarning = new Audio(warningSound);
-    const timesUp = new Audio(timesUpSound);
-
 
     if (!overtime) {
       if (!timerRunning) {
@@ -41,14 +38,14 @@ class App extends Component {
           }
           if (seconds === 0) {
             if (minutes === 1) {
-              oneMinWarning.play()
+              this.playWarningSound()
             }
             if (minutes === 0) {
               clearInterval(this.myInterval)
               this.setState((prevState) => ({
                 overtime: !prevState.overtime
               }))
-              timesUp.play()
+              this.playTimesUpSound()
               this.countUp()
             } else {
               this.setState((prevState) => ({
@@ -104,6 +101,16 @@ class App extends Component {
     }))
   }
 
+  playWarningSound = () => {
+    const oneMinWarning = new Audio(warningSound);
+    oneMinWarning.play()
+  }
+
+  playTimesUpSound = () => {
+    const timesUp = new Audio(timesUpSound);
+    timesUp.play()
+  }
+
   componentWillUnmount() {
     clearInterval(this.myInterval)
   }
@@ -126,6 +133,9 @@ class App extends Component {
           </button>
           <button id="timer-button" onClick={() => this.resetTimer()}>
             Reset
+          </button>
+          <button id="timer-button" onClick={() => this.playWarningSound()}>
+            Sound Check
           </button>
         </div>
       </div>
