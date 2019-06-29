@@ -101,7 +101,10 @@ class App extends Component {
         <div className="header">
           <p id="title"><span id="emphasize">{`//`}</span> Blog Timer</p>
           <p id="time-remaining">
-            {overtime ? 'Overtime' : 'Time Remaining'}: <span className={ timerRunning ? "on" : "off" }> {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</span>
+            {overtime ? 'Overtime' : 'Time Remaining'}:
+            <span className={`${timerRunning ? `on` : `off`} clock`} id={`${overtime ? `ot` : ``}`}>
+              {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+            </span>
           </p>
           <button id="timer-button" onClick={() => this.toggleTimer()}>
             { timerRunning ? "Stop Timer" : "Start Timer" }

@@ -4,6 +4,7 @@
 body {
   background-color: #31393C;
   color: #ececec;
+  /* font-family: 'Cousine', monospace; */
 }
 
 .header {
@@ -29,6 +30,14 @@ body {
 
 #time-remaining {
   font-size: 2em;
+  display: flex;
+  width: 25vw;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clock {
+  font-family: 'Inconsolata', monospace;
 }
 
 .on {
@@ -37,6 +46,11 @@ body {
 }
 
 .off {
+  animation: timer-off 0.2s;
+  animation-fill-mode: forwards;
+}
+
+#ot {
   animation: timer-off 0.2s;
   animation-fill-mode: forwards;
 }
