@@ -8,10 +8,10 @@ class App extends Component {
   timesUp = new Audio(timesUpSound);
 
   state = {
-    // seconds: 0, // real
-    // minutes: 5, // real
-    seconds: 2, // test
-    minutes: 0, // test
+    seconds: 0, // real
+    minutes: 5, // real
+    // seconds: 2, // test
+    // minutes: 0, // test
     timerRunning: false,
     overtime: false,
   }
