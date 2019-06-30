@@ -28,16 +28,16 @@ class App extends Component {
 
     if (!overtime) {
       if (!timerRunning) {
-        this.setState((prevState) => ({
-          timerRunning: !prevState.timerRunning
+        this.setState(({ timerRunning }) => ({
+          timerRunning: !timerRunning
         }))
 
         this.myInterval = setInterval(() => {
           const { seconds, minutes } = this.state
 
           if (seconds > 0) {
-            this.setState((prevState) => ({
-              seconds: prevState.seconds - 1
+            this.setState(({ seconds }) => ({
+              seconds: seconds - 1
             }), this.updateTitle)
           }
           if (seconds === 0) {
@@ -46,14 +46,14 @@ class App extends Component {
             }
             if (minutes === 0) {
               clearInterval(this.myInterval)
-              this.setState((prevState) => ({
-                overtime: !prevState.overtime
+              this.setState(({ overtime }) => ({
+                overtime: !overtime
               }))
               this.playTimesUpSound()
               this.countUp()
             } else {
-              this.setState((prevState) => ({
-                minutes: prevState.minutes - 1,
+              this.setState(({ minutes }) => ({
+                minutes: minutes - 1,
                 seconds: 59
               }), this.updateTitle)
             }
@@ -62,8 +62,8 @@ class App extends Component {
       } else {
         clearInterval(this.myInterval)
 
-        this.setState((prevState) => ({
-          timerRunning: !prevState.timerRunning
+        this.setState(({ timerRunning }) => ({
+          timerRunning: !timerRunning
         }))
       }
     } else {
@@ -78,19 +78,19 @@ class App extends Component {
       const { seconds } = this.state
 
       if (seconds < 60) {
-        this.setState((prevState) => ({
-          seconds: prevState.seconds + 1
+        this.setState(({ seconds }) => ({
+          seconds: seconds + 1
         }), this.updateTitle)
       }
       if (seconds === 59) {
-        this.setState((prevState) => ({
-          minutes: prevState.minutes + 1,
+        this.setState(({ minutes }) => ({
+          minutes: minutes + 1,
           seconds: 0
         }), this.updateTitle)}
       }, 1000)
 
-    this.setState((prevState) => ({
-      seconds: prevState.seconds + 1
+    this.setState(({ seconds }) => ({
+      seconds: seconds + 1
     }))
   }
 
@@ -98,12 +98,12 @@ class App extends Component {
     clearInterval(this.myInterval)
 
     this.stopTimesUpSound()
-    this.setState((prevState) => ({
+    this.setState({
       timerRunning: false,
       seconds: 0,
       minutes: 5,
       overtime: false,
-    }))
+    })
   }
 
   playWarningSound = () => {
