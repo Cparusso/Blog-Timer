@@ -4,12 +4,16 @@ import timesUpSound from './sounds/applauses.mp3';
 import './App.css';
 
 class App extends Component {
+  // I need to declare the timesUpSound globally to allow myself to pause and reset the sound in multiple functions
+  timesUp = new Audio(timesUpSound);
+
   state = {
     // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
-    // seconds: 0, // real
-    // minutes: 5, // real
-    seconds: 5, // test
-    minutes: 0, // test
+    // This is most likley an issue of when/where the updateTitle function is being called
+    seconds: 0, // real
+    minutes: 5, // real
+    // seconds: 2, // test
+    // minutes: 0, // test
     timerRunning: false,
     overtime: false,
   }
@@ -93,6 +97,7 @@ class App extends Component {
   resetTimer = () => {
     clearInterval(this.myInterval)
 
+    this.stopTimesUpSound()
     this.setState((prevState) => ({
       timerRunning: false,
       seconds: 0,
@@ -102,13 +107,22 @@ class App extends Component {
   }
 
   playWarningSound = () => {
+    // I can declare the warning sound locally because the sound is short
+    // so I never have to stop it from playing and because I want the
+    // sound check button to be able to be pressed without having to wait
+    // for the sound to finish playing
+    // (theres about 8 seconds of silence in the audio file at the end)
     const oneMinWarning = new Audio(warningSound);
     oneMinWarning.play()
   }
 
   playTimesUpSound = () => {
-    const timesUp = new Audio(timesUpSound);
-    timesUp.play()
+    this.timesUp.play()
+  }
+
+  stopTimesUpSound = () => {
+    this.timesUp.pause()
+    this.timesUp.currentTime = 0
   }
 
   componentWillUnmount() {
@@ -128,15 +142,17 @@ class App extends Component {
               {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
             </span>
           </p>
-          <button id="timer-button" onClick={() => this.toggleTimer()}>
-            { timerRunning ? "Stop Timer" : "Start Timer" }
-          </button>
-          <button id="timer-button" onClick={() => this.resetTimer()}>
-            Reset
-          </button>
-          <button id="timer-button" onClick={() => this.playWarningSound()}>
-            Sound Check
-          </button>
+          <div id="buttons">
+            <button id="timer-button" onClick={() => this.toggleTimer()}>
+              { timerRunning ? "Stop Timer" : "Start Timer" }
+            </button>
+            <button id="timer-button" onClick={() => this.resetTimer()}>
+              Reset Timer
+            </button>
+            <button id="timer-button" onClick={() => this.playWarningSound()}>
+              Sound Check
+            </button>
+          </div>
         </div>
       </div>
     )
@@ -145,6 +161,7 @@ class App extends Component {
 
 export default App;
 
+// Hooks?
 // import React, { useState, useEffect } from 'react';
 // import './App.css';
 //

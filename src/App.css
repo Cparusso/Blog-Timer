@@ -77,16 +77,49 @@ body {
   outline: none;
   background: none;
   font-size: 1.3em;
-  border-radius: 50em;
-  width: 5.5em;
+  /* border-radius: 50em; */
+  width: 13vw;
   animation: btn-no-hover 0.2s;
   animation-fill-mode: forwards;
   border: none;
+
+  /* this was for the underline */
+  /* position: relative;
+  color: #6CD4FF;
+  text-decoration: none; */
 }
 
 #timer-button:hover {
   animation: btn-hover 0.2s;
   animation-fill-mode: forwards;
+}
+
+/* this was also for the underline */
+/* #timer-button:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.5px;
+  bottom: 0;
+  left: 0;
+  background-color: #6CD4FF;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.1s ease-in-out 0s;
+  transition: all 0.1s ease-in-out 0s;
+} */
+
+/* this was also also for the underline */
+/* #timer-button:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(0.7);
+  transform: scaleX(0.7);
+} */
+
+/* this is to move the buttons down while clicked */
+#timer-button:active {
+  transform: translateY(0.13vh);
 }
 
 @keyframes btn-no-hover {
@@ -105,4 +138,10 @@ body {
   100% {
     color: #6CD4FF;
   }
+}
+
+#buttons {
+  display: flex;
+  width: 40vw;
+  justify-content: space-between;
 }
