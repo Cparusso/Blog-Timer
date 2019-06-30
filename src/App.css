@@ -142,6 +142,7 @@ body {
 
 #buttons {
   display: flex;
-  width: 40vw;
   justify-content: space-between;
+  width: 40vw;
+  margin-top: 2vh;
 }
