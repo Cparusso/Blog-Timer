@@ -8,23 +8,23 @@ class App extends Component {
   timesUp = new Audio(timesUpSound);
 
   state = {
-    // Currently when the timer goes into overtime it waits until 2 seconds to update the time in the title
-    // This is most likley an issue of when/where the updateTitle function is being called
-    seconds: 0, // real
-    minutes: 5, // real
-    // seconds: 2, // test
-    // minutes: 0, // test
+    // seconds: 0, // real
+    // minutes: 5, // real
+    seconds: 2, // test
+    minutes: 0, // test
     timerRunning: false,
     overtime: false,
   }
 
   updateTitle = () => {
     const { seconds, minutes, overtime } = this.state
+
     document.title = `${overtime ? `Overtime` : `Time` }: ${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
   }
 
   toggleTimer = () => {
     const { timerRunning, overtime } = this.state
+    this.updateTitle()
 
     if (!overtime) {
       if (!timerRunning) {
@@ -91,19 +91,18 @@ class App extends Component {
 
     this.setState(({ seconds }) => ({
       seconds: seconds + 1
-    }))
+    }), this.updateTitle)
   }
 
   resetTimer = () => {
     clearInterval(this.myInterval)
-
     this.stopTimesUpSound()
     this.setState({
       timerRunning: false,
       seconds: 0,
       minutes: 5,
       overtime: false,
-    })
+    }, this.updateTitle)
   }
 
   playWarningSound = () => {
