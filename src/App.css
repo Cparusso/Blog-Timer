@@ -143,6 +143,6 @@ body {
 #buttons {
   display: flex;
   justify-content: space-between;
-  width: 40vw;
+  width: 32vw;
   margin-top: 2vh;
 }
