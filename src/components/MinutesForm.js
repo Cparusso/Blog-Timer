@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class MinutesForm extends Component {
   handleSubmit = (e) => {
+    this.props.setStartMinutes(e)
     this.props.toggleForm('minutes')
     e.preventDefault()
   }

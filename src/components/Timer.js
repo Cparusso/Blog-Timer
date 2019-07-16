@@ -10,10 +10,12 @@ class Timer extends Component {
   timesUp = new Audio(timesUpSound)
 
   state = {
-    seconds: 0, // real
+    startMinutes: 5, // real
+    startSeconds: 0, // real
     minutes: 5, // real
-    // seconds: 2, // test
+    seconds: 0, // real
     // minutes: 0, // test
+    // seconds: 2, // test
     timerRunning: false,
     overtime: false,
   }
@@ -104,8 +106,8 @@ class Timer extends Component {
     this.stopTimesUpSound()
     this.setState({
       timerRunning: false,
-      seconds: 0,
-      minutes: 5,
+      minutes: this.state.startMinutes,
+      seconds: this.state.startSeconds,
       overtime: false,
     }, this.updateTitle)
   }
@@ -157,6 +159,30 @@ class Timer extends Component {
     }
   }
 
+  setStartMinutes = (e) => {
+    if (e.target.value === '') {
+      this.setState({
+        startMinutes: 0
+      })
+    } else {
+      this.setState({
+        startMinutes: this.state.minutes
+      })
+    }
+  }
+
+  setStartSeconds = (e) => {
+    if (e.target.value === '') {
+      this.setState({
+        startSeconds: 0
+      })
+    } else {
+      this.setState({
+        startSeconds: this.state.seconds
+      })
+    }
+  }
+
   render() {
     const { minutes,
             seconds,
@@ -177,7 +203,9 @@ class Timer extends Component {
                 minutes={minutes}
                 seconds={seconds}
                 setMinutes={this.setMinutes}
+                setStartMinutes={this.setStartMinutes}
                 setSeconds={this.setSeconds}
+                setStartSeconds={this.setStartSeconds}
               />
             </span>
           </span>

@@ -30,7 +30,9 @@ class Ticker extends Component {
             timerRunning,
             overtime,
             setMinutes,
-            setSeconds
+            setSeconds,
+            setStartMinutes,
+            setStartSeconds,
           } = this.props
 
     return (
@@ -43,6 +45,7 @@ class Ticker extends Component {
                 toggleForm={ this.toggleForm }
                 minutes={ minutes }
                 setMinutes={ setMinutes }
+                setStartMinutes={ setStartMinutes }
               />
             : <span className="minutes-input" onClick={ () => this.toggleForm('minutes') }>
               {minutes}
@@ -54,6 +57,7 @@ class Ticker extends Component {
                 toggleForm={ this.toggleForm }
                 seconds={ seconds }
                 setSeconds={ setSeconds }
+                setStartSeconds={ setStartSeconds }
               />
           : <span onClick={ () => this.toggleForm('seconds') }>
               {seconds < 10
