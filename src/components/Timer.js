@@ -10,6 +10,9 @@ class Timer extends Component {
   timesUp = new Audio(timesUpSound)
 
   state = {
+    minutesClicked: false,
+    secondsClicked: false,
+
     startMinutes: 5, // real
     startSeconds: 0, // real
     minutes: 5, // real
@@ -26,7 +29,28 @@ class Timer extends Component {
     document.title = `${overtime ? `Overtime` : `Time` }: ${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
   }
 
+  toggleForm = (selection) => {
+    if (selection === 'minutes') {
+      this.setState(({ minutesClicked }) => ({
+        minutesClicked: !minutesClicked
+      }))
+    }
+    if (selection === 'seconds') {
+      this.setState(({ secondsClicked }) => ({
+        secondsClicked: !secondsClicked
+      }))
+    }
+    if (selection === 'both') {
+      this.setState({
+        minutesClicked: false,
+        secondsClicked: false
+      })
+    }
+  }
+
   toggleTimer = () => {
+    this.toggleForm('both')
+
     const { timerRunning, overtime } = this.state
     this.updateTitle()
 
@@ -38,20 +62,16 @@ class Timer extends Component {
 
         this.myInterval = setInterval(() => {
           const { seconds, minutes } = this.state
-          console.log("minutes", typeof(minutes));
-          console.log("seconds", seconds);
           if (seconds > 0) {
             this.setState(({ seconds }) => ({
               seconds: seconds - 1
             }), this.updateTitle)
           }
           if (seconds === 0) {
-            console.log("seconds === 0");
             if (minutes === 1) {
               this.playWarningSound()
             }
             if (minutes === 0) {
-              console.log("minutes === 0");
               clearInterval(this.myInterval)
               this.setState(({ overtime }) => ({
                 overtime: !overtime
@@ -188,6 +208,8 @@ class Timer extends Component {
             seconds,
             timerRunning,
             overtime,
+            minutesClicked,
+            secondsClicked,
           } = this.state
 
     return (
@@ -206,6 +228,9 @@ class Timer extends Component {
                 setStartMinutes={this.setStartMinutes}
                 setSeconds={this.setSeconds}
                 setStartSeconds={this.setStartSeconds}
+                minutesClicked={minutesClicked}
+                secondsClicked={secondsClicked}
+                toggleForm={this.toggleForm}
               />
             </span>
           </span>
