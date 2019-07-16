@@ -1,5 +1,6 @@
 /* Color Palette: */
 /* https://coolors.co/727a86-30bced-009ddc-31393c-6cd4ff */
+html { font-size: calc(1em + 1vw) }
 
 body {
   background-color: #282a2b;
@@ -17,19 +18,19 @@ body {
 }
 
 #emphasize {
-  font-size: 1.3em;
+  /* font-size: 1.3em; */
   font-weight: 600;
   color: #6CD4FF;
 }
 
 #title {
-  font-size: 5em;
+  font-size: 3em;
   font-weight: bold;
   margin: 0;
 }
 
 #time-remaining {
-  font-size: 2em;
+  /* font-size: 1em; */
   display: flex;
   width: 25vw;
   justify-content: space-around;
@@ -38,6 +39,8 @@ body {
 
 .clock {
   font-family: 'Inconsolata', monospace;
+  display: flex;
+  align-items: center;
 }
 
 .on {
@@ -73,10 +76,39 @@ body {
   }
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.time-input {
+  font-family: 'Inconsolata', monospace;
+  background: #282a2b;
+  border: none;
+  color: #ececec;
+  outline: none;
+  font-size: 1em;
+}
+
+.minutes-input {
+  width: 2.3vw;
+  text-align: right;
+}
+
+.seconds-input {
+  width: 2.3vw;
+  text-align: left;
+}
+
+form {
+  display: flex;
+}
+
 #timer-button {
   outline: none;
   background: none;
-  font-size: 1.3em;
+  font-size: 0.7em;
   /* border-radius: 50em; */
   width: 13vw;
   animation: btn-no-hover 0.2s;
