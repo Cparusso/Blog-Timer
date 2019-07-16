@@ -3,28 +3,8 @@ import MinutesForm from './MinutesForm.js';
 import SecondsForm from './SecondsForm.js';
 
 class Ticker extends Component {
-  // state={
-  //   minutesClicked: false,
-  //   secondsClicked: false,
-  // }
-
-  // toggleForm = (selection) => {
-  //   if (selection === 'minutes') {
-  //     this.setState(({ minutesClicked }) => ({
-  //       minutesClicked: !minutesClicked
-  //     }))
-  //   } else {
-  //     this.setState(({ secondsClicked }) => ({
-  //       secondsClicked: !secondsClicked
-  //     }))
-  //   }
-  // }
 
   render () {
-    // const { minutesClicked,
-    //         secondsClicked
-    //       } = this.state
-
     const { minutes,
             seconds,
             timerRunning,
