@@ -48,8 +48,6 @@ class Timer extends Component {
   toggleTimer = () => {
     const { timerRunning,
             overtime,
-            startMinutes,
-            startSeconds,
             minutesClicked,
             secondsClicked,
           } = this.state
@@ -137,7 +135,7 @@ class Timer extends Component {
     if (minutesClicked || secondsClicked) {
       this.setState(({ minutes, seconds }) => ({
         startMinutes: minutes,
-        startSeconds: seconds,
+        startSeconds: seconds
       }, this.toggleForm('both')))
     }
 
@@ -179,7 +177,9 @@ class Timer extends Component {
     let cappedInput
 
     if (value[0] === '0') {
+      // console.log(value[0] === '0')
       cappedInput = value.slice(1, maxLength + 1)
+      // console.log('capped input', cappedInput)
     } else {
       cappedInput = value.slice(0, maxLength)
     }
