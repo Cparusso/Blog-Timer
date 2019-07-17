@@ -10,15 +10,12 @@ class Timer extends Component {
   timesUp = new Audio(timesUpSound)
 
   state = {
-    minutesClicked: false,
-    secondsClicked: false,
-
-    startMinutes: 5, // real
-    startSeconds: 0, // real
     minutes: 5, // real
     seconds: 0, // real
-    // minutes: 0, // test
-    // seconds: 2, // test
+    startMinutes: 5,
+    startSeconds: 0,
+    minutesClicked: false,
+    secondsClicked: false,
     timerRunning: false,
     overtime: false,
   }
@@ -26,7 +23,7 @@ class Timer extends Component {
   updateTitle = () => {
     const { seconds, minutes, overtime } = this.state
 
-    document.title = `${overtime ? `Overtime` : `Time` }: ${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+    document.title = `${overtime ? `Overtime` : `Time`}: ${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
   }
 
   toggleForm = (selection) => {
@@ -49,9 +46,22 @@ class Timer extends Component {
   }
 
   toggleTimer = () => {
-    this.toggleForm('both')
+    const { timerRunning,
+            overtime,
+            startMinutes,
+            startSeconds,
+            minutesClicked,
+            secondsClicked,
+          } = this.state
 
-    const { timerRunning, overtime } = this.state
+    if (minutesClicked || secondsClicked) {
+      this.setState(({ minutes, seconds }) => ({
+        startMinutes: minutes,
+        startSeconds: seconds,
+      }))
+      this.toggleForm('both')
+    }
+
     this.updateTitle()
 
     if (!overtime) {

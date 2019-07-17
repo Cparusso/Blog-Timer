@@ -30,7 +30,6 @@ body {
 }
 
 #time-remaining {
-  /* font-size: 1em; */
   display: flex;
   width: 23vw;
   justify-content: space-between;
