@@ -30,7 +30,9 @@ class Ticker extends Component {
                 setStartMinutes={ setStartMinutes }
               />
             : <span className="minutes-input" onClick={ () => toggleForm('minutes') }>
-              {minutes}
+              {minutes < 10
+                ? `0${minutes}`
+                : minutes}
             </span>
           }
           :

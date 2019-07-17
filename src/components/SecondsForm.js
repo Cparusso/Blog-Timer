@@ -17,9 +17,9 @@ class SecondsForm extends Component {
           type="number"
           name="seconds"
           value={seconds < 10
-            ? `0${seconds}`
-            : seconds
-          }
+                  ? `0${seconds}`
+                  : seconds
+                }
           onChange={ setSeconds }
           className='time-input seconds-input'
         />

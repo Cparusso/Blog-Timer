@@ -17,7 +17,10 @@ class MinutesForm extends Component {
           align="center"
           type="number"
           name="minutes"
-          value={ minutes }
+          value={ minutes < 10
+                  ? `0${minutes}`
+                  : minutes 
+                }
           onChange={ setMinutes }
           className='time-input minutes-input'
         />

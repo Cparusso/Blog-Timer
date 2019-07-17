@@ -18,7 +18,7 @@ body {
 }
 
 #emphasize {
-  /* font-size: 1.3em; */
+  font-size: 1.3em;
   font-weight: 600;
   color: #6CD4FF;
 }
@@ -32,8 +32,8 @@ body {
 #time-remaining {
   /* font-size: 1em; */
   display: flex;
-  width: 25vw;
-  justify-content: space-around;
+  width: 23vw;
+  justify-content: space-between;
   align-items: center;
 }
 
