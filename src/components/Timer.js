@@ -132,6 +132,15 @@ class Timer extends Component {
   }
 
   resetTimer = () => {
+    const { minutesClicked, secondsClicked } = this.state
+
+    if (minutesClicked || secondsClicked) {
+      this.setState(({ minutes, seconds }) => ({
+        startMinutes: minutes,
+        startSeconds: seconds,
+      }, this.toggleForm('both')))
+    }
+
     clearInterval(this.myInterval)
     this.stopTimesUpSound()
     this.setState({
