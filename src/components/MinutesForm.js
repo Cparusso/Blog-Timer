@@ -14,12 +14,13 @@ class MinutesForm extends Component {
       <form onSubmit={ this.handleSubmit } >
         <input
           autoFocus
+          maxLength="2"
           align="center"
           type="number"
           name="minutes"
           value={ minutes < 10
                   ? `0${minutes}`
-                  : minutes 
+                  : minutes
                 }
           onChange={ setMinutes }
           className='time-input minutes-input'

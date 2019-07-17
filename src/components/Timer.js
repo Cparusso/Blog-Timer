@@ -175,25 +175,43 @@ class Timer extends Component {
   }
 
   setMinutes = (e) => {
-    if (e.target.value === '') {
+    const { value, maxLength } = e.target
+    let cappedInput
+
+    if (value[0] === '0') {
+      cappedInput = value.slice(1, maxLength + 1)
+    } else {
+      cappedInput = value.slice(0, maxLength)
+    }
+
+    if (cappedInput === '') {
       this.setState({
         minutes: 0
       })
     } else {
       this.setState({
-        minutes: parseInt(e.target.value)
+        minutes: parseInt(cappedInput)
       })
     }
   }
 
   setSeconds = (e) => {
-    if (e.target.value === '') {
+    const { value, maxLength } = e.target
+    let cappedInput
+
+    if (value[0] === '0') {
+      cappedInput = value.slice(1, maxLength + 1)
+    } else {
+      cappedInput = value.slice(0, maxLength)
+    }
+
+    if (cappedInput === '') {
       this.setState({
         seconds: 0
       })
     } else {
       this.setState({
-        seconds: parseInt(e.target.value)
+        seconds: parseInt(cappedInput)
       })
     }
   }
