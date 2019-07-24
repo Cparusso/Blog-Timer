@@ -14,6 +14,7 @@ class SecondsForm extends Component {
       <form onSubmit={ this.handleSubmit } >
         <input
           autoFocus
+          onFocus={(e) => e.target.select()}
           maxLength="2"
           type="number"
           name="seconds"

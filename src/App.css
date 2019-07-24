@@ -8,6 +8,10 @@ body {
   /* font-family: 'Cousine', monospace; */
 }
 
+::selection {
+  background: #6CD4FF20; 
+}
+
 .header {
   display: flex;
   flex-direction: column;

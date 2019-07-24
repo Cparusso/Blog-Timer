@@ -136,7 +136,7 @@ class Timer extends Component {
       this.setState(({ minutes, seconds }) => ({
         startMinutes: minutes,
         startSeconds: seconds
-      }, this.toggleForm('both')))
+      }))
     }
 
     clearInterval(this.myInterval)
