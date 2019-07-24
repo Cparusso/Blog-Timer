@@ -8,13 +8,14 @@ class SecondsForm extends Component {
   }
 
   render () {
-    const { seconds, setSeconds } = this.props
+    const { seconds, setSeconds, toggleForm } = this.props
 
     return (
       <form onSubmit={ this.handleSubmit } >
         <input
           autoFocus
           onFocus={(e) => e.target.select()}
+          onBlur={() => toggleForm("seconds")}
           maxLength="2"
           type="number"
           name="seconds"

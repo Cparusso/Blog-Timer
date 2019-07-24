@@ -7,14 +7,19 @@ class MinutesForm extends Component {
     e.preventDefault()
   }
 
+  componentWillUnmount() {
+    this.props.toggleForm("seconds")
+  }
+
   render () {
-    const { minutes, setMinutes } = this.props
+    const { minutes, setMinutes, toggleForm } = this.props
 
     return (
       <form onSubmit={ this.handleSubmit } >
         <input
           autoFocus
-          onFocus={(e) => e.target.select()}
+          onFocus={(event) => event.target.select()}
+          onBlur={() => toggleForm("minutes")}
           maxLength="2"
           align="center"
           type="number"
