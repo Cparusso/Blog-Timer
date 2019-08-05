@@ -6,7 +6,7 @@ When you have one minute remaining a warning sound will play, and when time runs
 
 An additional feature is that once you run out of time, the timer will start counting up. This allows you to see how long you went over, so that if you're rehearsing your presentation you can know how much you need to shorten your speech.
 
-Simply run `npm install && npm start` to get started, or navigate directly to the site by clicking [here](blogtimer.herokuapp.com).
+Simply run `npm install && npm start` to get started, or navigate directly to the site by clicking [here](http://blogtimer.herokuapp.com/).
 
 # Upcoming Features
 
