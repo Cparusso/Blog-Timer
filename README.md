@@ -15,3 +15,5 @@ Simply fork and clone this repo and run `npm install && npm start` to get starte
 - Currently, if the forms are open when you hit reset timer, the time that you had entered in is not persisted. I will be changing it so that does not happen.
 
 - I will be adding the functionality to adjust the warning time instead of having it locked at 1 minute remaining.
+
+- This is not so much a feature, but the app has evolved from a simple blog timer application to a multi-use timer, so I will need to rename and rebrand the whole thing.
