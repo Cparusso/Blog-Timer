@@ -1,7 +1,15 @@
-Notes:
+# // Blog Timer
 
-- Need to make it so that you cant type in a time that is over 60 seconds.
+This app is a simple timer app built using react. Unlike most timers I've used, this timer displays the updating time up in the title of the tab so that you can have the timer running in the background while you are presenting something and see how much time you have left without having to switch tabs.
 
-- If the forms are open when you hit reset timer it will change the timer back to 5:00 on the first reset click, and then go to the set time on the second reset click.
+When you have one minute remaining a warning sound will play, and when time runs out the app will start applauding you.
 
-- Consider adding the functionality to adjust the warning time.
+An additional feature is that once you run out of time, the timer will start counting up. This allows you to see how long you went over, so that if you're rehearsing your presentation you can know how much you need to shorten your speech.
+
+# Upcoming Features
+
+- I will be putting in some validations to ensure that a user cannot enter a number over 60 in the seconds field.
+
+- Currently, if the forms are open when you hit reset timer, the time that you had entered in is not persisted. I will be changing it so that does not happen.
+
+- I will be adding the functionality to adjust the warning time instead of having it locked at 1 minute remaining.
