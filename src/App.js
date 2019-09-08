@@ -1,3 +1,11 @@
+// - Consider adding the functionality to adjust the warning time.
+
+// - It would be nice if you could hit spacebar to start / stop the timer
+
+//   - Move the sound check button to the bottom right and change it from text to a sound related icon
+
+//     - Clicking the form while the timer is ticking should pause the timer so that you can edit it
+
 import React, { Component } from 'react';
 import './App.css';
 import Timer from './components/Timer.js';

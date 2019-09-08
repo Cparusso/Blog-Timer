@@ -1,13 +1,19 @@
-Notes:
+# // Blog Timer
 
-- Need to make it so that you cant type in a time that is over 60 seconds.
+This app is a simple timer app built using react. Unlike most timers I've used, this timer displays the updating time up in the title of the tab so that you can have the timer running in the background while you are presenting something and see how much time you have left without having to switch tabs.
 
-- If the forms are open when you hit reset timer it will change the timer back to 5:00 on the first reset click, and then go to the set time on the second reset click.
+When you have one minute remaining a warning sound will play, and when time runs out the app will start applauding you.
 
-- Consider adding the functionality to adjust the warning time.
+An additional feature is that once you run out of time, the timer will start counting up. This allows you to see how long you went over, so that if you're rehearsing your presentation you can know how much you need to shorten your speech.
 
-- It would be nice if you could hit spacebar to start/stop the timer
+Simply fork and clone this repo and run `npm install && npm start` to get started, or navigate directly to the site by clicking [here](http://blogtimer.herokuapp.com/).
 
-- Move the sound check button to the bottom right and change it from text to a sound related icon
+# Upcoming Features
 
-- Clicking the form while the timer is ticking should pause the timer so that you can edit it
+- I will be putting in some validations to ensure that a user cannot enter a number over 60 in the seconds field.
+
+- Currently, if the forms are open when you hit reset timer, the time that you had entered in is not persisted. I will be changing it so that does not happen.
+
+- I will be adding the functionality to adjust the warning time instead of having it locked at 1 minute remaining.
+
+- This is not so much a feature, but the app has evolved from a simple blog timer application to a multi-use timer, so I will need to rename and rebrand the whole thing.
