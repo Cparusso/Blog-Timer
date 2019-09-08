@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 class MinutesForm extends Component {
-  handleSubmit = (e) => {
-    this.props.setStartMinutes(e)
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.setStartMinutes(event)
     this.props.toggleForm('minutes')
-    e.preventDefault()
   }
 
   componentWillUnmount() {
@@ -19,7 +19,7 @@ class MinutesForm extends Component {
         <input
           autoFocus
           onFocus={(event) => event.target.select()}
-          onBlur={() => toggleForm("minutes")}
+          onBlur={(event) => this.handleSubmit(event)}
           maxLength="2"
           align="center"
           type="number"

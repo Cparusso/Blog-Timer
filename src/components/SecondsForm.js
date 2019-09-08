@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 class SecondsForm extends Component {
-  handleSubmit = (e) => {
-    this.props.setStartSeconds(e)
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.setStartSeconds(event)
     this.props.toggleForm('seconds')
-    e.preventDefault()
+    console.log("submit");
+    
   }
 
   render () {
@@ -14,8 +16,8 @@ class SecondsForm extends Component {
       <form onSubmit={ this.handleSubmit } >
         <input
           autoFocus
-          onFocus={(e) => e.target.select()}
-          onBlur={() => toggleForm("seconds")}
+          onFocus={(event) => event.target.select()}
+          onBlur={(event) => this.handleSubmit(event)}
           maxLength="2"
           type="number"
           name="seconds"
